@@ -22,3 +22,7 @@ unicode
 unicode_gen
 run_octane
 run_sunspider_like
+
+zig-out
+zig-cache
+.zig-cache

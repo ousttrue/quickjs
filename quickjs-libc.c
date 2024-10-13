@@ -877,7 +877,7 @@ static JSValue js_new_std_file(JSContext *ctx, FILE *f,
     return obj;
 }
 
-static void js_set_error_object(JSContext *ctx, JSValue obj, int err)
+static void js_set_error_object(JSContext *ctx, JSValueConst obj, int err)
 {
     if (!JS_IsUndefined(obj)) {
         JS_SetPropertyStr(ctx, obj, "errno", JS_NewInt32(ctx, err));
@@ -2022,8 +2022,8 @@ static int64_t get_time_ns(void)
 }
 #endif
 
-static JSValue js_os_now(JSContext *ctx, JSValue this_val,
-                         int argc, JSValue *argv)
+static JSValue js_os_now(JSContext *ctx, JSValueConst this_val,
+                         int argc, JSValueConst *argv)
 {
     return JS_NewFloat64(ctx, (double)get_time_ns() / 1e6);
 }
